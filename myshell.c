@@ -1,10 +1,3 @@
-/*
- * MyShell Project for SOFE 3950U / CSCI 3020U: Operating Systems
- *
- * Copyright (C) 2017, <GROUP MEMBERS>
- * All rights reserved.
- * 
- */
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -17,10 +10,6 @@
 // Put macros or constants here using #define
 #define BUFFER_LEN 1024
 #define MAX_TOKENS 10
-
-// Put global environment variables here
-
-// Define functions declared in myshell.h here
 
 int main(int argc, char *argv[])
 {
@@ -81,13 +70,13 @@ int main(int argc, char *argv[])
         // other commands here...
 		
 		// clear screen
-		else if (strcmp(command, "clear") == 0){
+		else if (strcmp(command, "clr") == 0){
 			clear_screen();
 		}
 
 		// display help
 		else if (strcmp(command, "help") == 0){
-//			 display_help();
+			 display_help();
 		}	
 		
 		// pause the shell

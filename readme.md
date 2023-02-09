@@ -75,10 +75,10 @@ I/O Redirection
 - Done using '>'.
 	- '>' is used after a command, where all output to the terminal is redirected to a specified output file.
 	- The output file will be overwritten if one already exists. It will create the file if it doesn't already exist.
-	- Format:	'<command> > <outputDestination>'	OR	'<command> <parameter> > <outputDestination>
+	- Format:	command  outputDestination	OR	command parameter  outputDestination
 
 - Output Redirection using Append:
     - Append is done using '>>' 
         - used to route all terminal output to a certain output file following a command.
         - The output will be added to the end of the file if the output file already exists. It will create the file if it doesn't already exist.
-        - Format:	'<command> >> <outputDestination>'	OR	'<command> <parameter> >> <outputDestination>'
+        - Format:	command outputDestination	OR	command parameter outputDestination

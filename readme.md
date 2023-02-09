@@ -16,44 +16,73 @@ Daanyaal Tahir<br>
 Jean-Paul Saliba <br>
 100741759<br>
 
-Objectives:<br><br>
-Learn to work in groups to develop software using Git<br><br>
+Setup
+----------------------------------------
+<br><br>
+- Open your Linux terminal and ensure you have C Installed. 
+- To check if you have C installed, enter 'gcc --version'
+- If C is not installed, first enter 'sudo apt update' and after enter 'sudo apt-get install gcc' than enter your credentials if you need to. 
+- After ensuring that C is installed in your Linux virtual environment, see the "Launching myshell" section of this manual
+<br><br>
 
-Gain experience developing multi-source file projects in C<br><br>
+Launching myshell
+----------------------------------------
+<br><br>
+-Ensure myshell is launched in a Linux environment to get full functionality
+1. Open the folder containing myshell.c in the Linux terminal
+2. Check if you have make installed on Linux by using the 'make -version' command
+3. If make is not installed on your Linux system first use the command 'sudo apt update' than use the command 'sudo apt install make' these commands will install make and allow you to run the makefile
+4. Run the "make" command to execute the make file 
+<br><br>
 
-Experience using Makefiles and other software build tools<br><br><br>
+Launching myshell with a Batchfile 
+----------------------------------------
+<br><br>
+- You can launch myshell and have it take input from a batchfile automatically 
+- When launching myshell.c from your Linux terminal, include the name of the batchfile after myshell the format of the command is below 
+- Format: 'sudo ./myshell <batchFile>'
+- Note: ensure you have any empty line at the end of the batch file to prevent segmentation faults
+- This command will allow myshell to execute the commands in the batchfile line by line
+<br><br>
 
+Commands
+----------------------------------------
+<br><br>
 
-Description:<br>
-Design a simple command line shell and implement it on the specified UNIX platform
-The Shell or Command Line Interpreter is the fundamental User interface to
-an Operating System. The lab project is to write a simple shell - myshell -
-that has the following functions:<br><br>
-
-cd - change working directory<br>
-clr - clear the screen<br>
-dir - list the contents of the directory<br>
+cd - changes the working directory<br>
+clr -will clear all the contents on the screen<br>
+dir - used to list the contents of the directory<br>
 environ - list all the environment string<br>
-echo - display the diaply followed by a new line<br>
-help - display the user manual using the more filter<br>
-pause - pause operation of the shell<br>
-quit - quit the shell<br><br>
+echo - displays all content entered after the echo commamnd followed by a new line<br>
+help - displays the user manual on to the terminal<br>
+pause - pauses the operation of the shell until the Enter key is pressed<br>
+quit - quit used to exit the shell
+<br><br>
 
+Invocation of External Programs 
+----------------------------------------
+<br><br>
+- Only the above commands are supported if you enter a command that does not exist you will get an error message. 
+- Inputing anything other than the list of recognized commands will be interpreted as a program invocation of the external program named <programname>.
+- After entering the program name, you can enter a list of arguments to pass to the external program.
+- Format:	'<programname>'		OR	'<programname> <arg1> <arg2> ... <argn>
+<br><br>
+I/O Redirection
+----------------------------------------
+- The output and input streams can be redirected to files with '<', '>', '>>'.
+- Input Redirection:
+	- Done using '<'.
+	- '<' is used after a command, where every line in the input file will be passed to the command.
+    - Format:	'<command> < <inputSource>'
 
+- Output Redirection using Truncate:
+- Done using '>'.
+	- '>' is used after a command, where all output to the terminal is redirected to a specified output file.
+	- The output file will be overwritten if one already exists. It will create the file if it doesn't already exist.
+	- Format:	'<command> > <outputDestination>'	OR	'<command> <parameter> > <outputDestination>
 
-Usage:<br>
-The shell can be invoked on Windows command line interpreter by typing myshell. It can be invoked on a UNIX based OS<br>
-by typing /myshell. The program accepts one argument which can be a batchfile containing user commands. <br>
-For example: ./myshell commands.txt <br>
-<br>
-
-The following are the commands for the shell: <br><br>
-
-help :  Lists the help menu <br>
-dir "directory":  Lists the contents of the directory <br>
-environ: Lists all the environment strings <br>
-echo "comment": Displays comment on the command line followed by a newline <br>
-clr. Clears the screen <br>
-cd "path": Changes the working directory to the specified path. <br>
-pause: Pauses operation of the shell until the ENTER key is hit <br>
-quit: Quits the shell <br>
+- Output Redirection using Append:
+    - Append is done using '>>' 
+        - used to route all terminal output to a certain output file following a command.
+        - The output will be added to the end of the file if the output file already exists. It will create the file if it doesn't already exist.
+        - Format:	'<command> >> <outputDestination>'	OR	'<command> <parameter> >> <outputDestination>'

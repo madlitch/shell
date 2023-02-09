@@ -57,12 +57,12 @@ quit - quit used to exit the shell
 
 Invocation of External Programs 
 ----------------------------------------
-<br><br>
 - Only the above commands are supported if you enter a command that does not exist you will get an error message. 
 - Inputing anything other than the list of recognized commands will be interpreted as a program invocation of the external program named <programname>.
 - After entering the program name, you can enter a list of arguments to pass to the external program.
-- Format:	<programname>		OR	<programname> <arg1> <arg2> ... <argn>
+- Format:	programname		OR	programname arg1 arg2 ... argn
 <br><br>
+	
 I/O Redirection
 ----------------------------------------
 - The output and input streams can be redirected to files with '<', '>', '>>'.

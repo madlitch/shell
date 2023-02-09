@@ -1,9 +1,6 @@
 /*
- * MyShell Project for SOFE 3950U / CSCI 3020U: Operating Systems
- *
- * Copyright (C) 2017, <GROUP MEMBERS>
- * All rights reserved.
- * 
+Lab 2 - A simple Shell 
+Group 10
  */
 #ifndef UTILITY_H_
 #define UTILITY_H_

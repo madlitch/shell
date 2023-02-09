@@ -1,3 +1,7 @@
+/*
+Lab 2 - A simple Shell 
+Group 10
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>

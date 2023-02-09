@@ -1,3 +1,7 @@
+/*
+Lab 2 - A simple Shell 
+Group 10
+ */
 #ifndef UTILITY_H_
 #define UTILITY_H_
 

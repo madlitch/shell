@@ -15,6 +15,9 @@ extern void change_dir(char* pwd, char* path);
 // clears the screen
 extern void clear_screen(void);
 
+// run executable
+extern void run_exec(char *pwd, char *command);
+
 // pauses the shell
 extern void pause_shell(void);
 

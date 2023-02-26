@@ -8,13 +8,13 @@ Group 10
 #define BUFFER_LEN 1024
 
 // string tokenizer functions
-extern int string_tokenizer(char* str, char tokens[][BUFFER_LEN]);
+extern int string_tokenizer(char *str, char tokens[][BUFFER_LEN]);
 
 // returns current directory
-extern void get_currentDir(char* pwd);
+extern void get_currentDir(char *pwd);
 
 // changes the directory
-extern void change_dir(char* pwd, char* path);
+extern void change_dir(char *pwd, char *path);
 
 // clears the screen
 extern void clear_screen(void);
@@ -29,7 +29,7 @@ extern void pause_shell(void);
 extern void display_help(void);
 
 // displays the directory
-extern void display_dir(char* path);
+extern void display_dir(char *path);
 
 // displays the environment variables
 extern void display_environs(char env[][BUFFER_LEN]);

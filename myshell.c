@@ -1,3 +1,7 @@
+/*
+Lab 2 - A simple Shell
+Group 10
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -34,7 +38,6 @@ int main(int argc, char *argv[]) {
     } else {
         fd = stdin;
     }
-
 
     printf("\n*************************************************************\n\n");
     printf("\n                 **** Welcome to myshell ****                  \n");

@@ -46,6 +46,35 @@ extern void clear_screen(void){
 	system("cls||clear");
 }
 
+// run executable
+extern void run_exec(char *pwd, char *command) {
+    char pth[BUFFER_LEN] = {0};
+    int status;
+    pid_t pid = 0;
+
+    memmove(command, command + 1, strlen(command));
+    strcat(pth, pwd);
+    strcat(pth, command);
+
+    if (access(pth, F_OK) == 0) {
+        pid = fork();
+        if (pid == 0) {
+            execl(pth, "", NULL);
+            perror(": ");
+        }
+        if (pid > 0) {
+            pid = wait(&status);
+            printf("End of process %d: ", pid);
+            if (WIFEXITED(status)) {
+                printf("The process ended with exit(%d).\n", WEXITSTATUS(status));
+            }
+            if (WIFSIGNALED(status)) {
+                printf("The process ended with kill -%d.\n", WTERMSIG(status));
+            }
+        }
+    }
+}
+
 // pauses the shell
 extern void pause_shell(void){
 	printf("\n\nShell is now paused. Please press ENTER key to continue....\n\n");

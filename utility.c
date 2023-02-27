@@ -119,3 +119,4 @@ extern void display_dir(char *path) {
 extern void display_environs(char env[][BUFFER_LEN]) {
     printf("%s\n%s\n", env[0], env[1]);
 }
+

@@ -34,4 +34,6 @@ extern void display_dir(char *path);
 // displays the environment variables
 extern void display_environs(char env[][BUFFER_LEN]);
 
+extern void io_red(char *path);
+
 #endif /* UTILITY_H_ */

@@ -6,6 +6,7 @@ Group 10
 #define UTILITY_H_
 
 #define BUFFER_LEN 1024
+#define MAX_TOKENS 10
 
 // string tokenizer functions
 extern int string_tokenizer(char *str, char tokens[][BUFFER_LEN]);
@@ -20,7 +21,7 @@ extern void change_dir(char *pwd, char *path);
 extern void clear_screen(void);
 
 // run executable
-extern void run_exec(char *pwd, char *command);
+extern void run_exec(char *pwd, char tokens[MAX_TOKENS][BUFFER_LEN], int token_count);
 
 // pauses the shell
 extern void pause_shell(void);

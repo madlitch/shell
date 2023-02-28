@@ -6,9 +6,9 @@ Group 10
 #include <stdlib.h>
 #include <unistd.h>
 #include <dirent.h>
-#include <sys/types.h>
 #include <string.h>
 #include "utility.h"
+#include <fcntl.h>
 
 // string tokenizer functions
 extern int string_tokenizer(char *str, char tokens[][BUFFER_LEN]) {
@@ -46,31 +46,67 @@ extern void clear_screen(void) {
 }
 
 // run executable
-extern void run_exec(char *pwd, char *command) {
+extern void run_exec(char *pwd, char tokens[MAX_TOKENS][BUFFER_LEN], int token_count) {
     char pth[BUFFER_LEN] = {0};
+    char args[BUFFER_LEN] = {0};
     int status;
-    pid_t pid = 0;
+    int flag_out;
+    int flag_in;
+    pid_t pid;
 
-    memmove(command, command + 1, strlen(command));
+    // remove the dot
+    memmove(tokens[0], tokens[0] + 1, strlen(tokens[0]));
     strcat(pth, pwd);
-    strcat(pth, command);
+    strcat(pth, tokens[0]);
+
+    for (int i = 1; i < token_count; i++) {
+        // check for io redirect flags
+        if (strcmp(tokens[i], "<") == 0) {
+            flag_in = i + 1;
+            i++;
+            continue;
+        } else if (strcmp(tokens[i], ">") == 0) {
+            flag_out = i + 1;
+            i++;
+            continue;
+        } else {
+            strcat(args, " ");
+            strcat(args, tokens[i]);
+        }
+    }
 
     if (access(pth, F_OK) == 0) {
         pid = fork();
         if (pid == 0) {
-            execl(pth, "", NULL);
+            // if stdout is redirected
+            if (flag_out) {
+                int fd = open(tokens[flag_out], O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
+                // make stdout go to file
+                dup2(fd, 1);
+                close(fd);
+            }
+
+            execl(pth, args, NULL);
+            // if exec fails, show error and kill child
             perror(": ");
+            exit(0);
         }
         if (pid > 0) {
-            pid = wait(&status);
-            printf("End of process %d: ", pid);
+            // don't wait if '&' is the last token
+            if (strcmp(tokens[token_count - 1], "&") != 0) {
+                pid = wait(&status);
+                printf("\nEnd of process %d: ", pid);
+            }
             if (WIFEXITED(status)) {
-                printf("The process ended with exit(%d).\n", WEXITSTATUS(status));
+                printf("\nThe process ended with exit(%d).\n", WEXITSTATUS(status));
             }
             if (WIFSIGNALED(status)) {
-                printf("The process ended with kill -%d.\n", WTERMSIG(status));
+                printf("\nThe process ended with kill -%d.\n", WTERMSIG(status));
             }
         }
+    } else {
+        // if executable is not found
+        perror(": ");
     }
 }
 
@@ -94,7 +130,6 @@ extern void display_help(void) {
     printf("clr\t\t\t Clears the screen.\n");
     printf("pause\t\t\t Pauses operation of the shell until the ENTER key is hit.\n");
     printf("quit\t\t\t Quits the shell.\n\n\n");
-
 }
 
 // displays the directory

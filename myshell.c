@@ -4,32 +4,29 @@ Group 10
  */
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <dirent.h>
-#include <sys/types.h>
 #include <string.h>
 #include "utility.h"
-#include "myshell.h"
 
 // Put macros or constants here using #define
 #define BUFFER_LEN 1024
 #define MAX_TOKENS 10
 
 int main(int argc, char *argv[]) {
-    // Input buffer and and commands
+    // Input buffer and commands
     char environ[2][BUFFER_LEN] = {0};
     char pwd[BUFFER_LEN] = {0};
     char shell[BUFFER_LEN] = {0};
     char buffer[BUFFER_LEN] = {0};
     char command[BUFFER_LEN] = {0};
     char tokens[MAX_TOKENS][BUFFER_LEN] = {0};
-    int token_count = 0;
+    int token_count;
 
     FILE *fd;
 
-    // Check to see if user has provided a batchfile
+    // Check to see if user has provided a batch file
     if (argc > 1) {
-        // If batchfile, then open the file for reading
+        // If batch file, then open the file for reading
         fd = fopen(argv[1], "r");
         if (fd == NULL) {
             perror("There was an error opening the specified file");
@@ -106,13 +103,7 @@ int main(int argc, char *argv[]) {
 
             // run exec
         else if (command[0] == *".") {
-            run_exec(pwd, command);
-        }
-
-            // lists the contents of the specified directory
-        else if (strcmp(command, "dir") == 0) {
-            display_dir(tokens[1]);
-            printf("\n");
+            run_exec(pwd, tokens, token_count);
         }
 
             // run the echo command
@@ -122,11 +113,6 @@ int main(int argc, char *argv[]) {
                 printf("%s ", tokens[i]);
             }
             printf("\n");
-        }
-
-            // display environment variables
-        else if (strcmp(command, "environ") == 0) {
-            display_environs(environ);
         }
 
             // 'quit' command to quit the shell

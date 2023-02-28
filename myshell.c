@@ -120,6 +120,11 @@ int main(int argc, char *argv[]) {
             return EXIT_SUCCESS;
         }
 
+		    // 
+        else if (strcmp(command, "io") == 0) {
+            io_red(fd);
+        }
+
             // Unsupported command
         else {
             printf("%s> ", pwd);

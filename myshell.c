@@ -48,7 +48,7 @@ int main(int argc, char *argv[]) {
     printf("%s> ", pwd);
 
     // Continuously loop to get user input from terminal or file
-    // and end loop when end of fille or shell is exited
+    // and end loop when end of file or shell is exited
     while (fgets(buffer, BUFFER_LEN, fd) != NULL) {
         // Perform string tokenization to get the command and argument
         int index = 0;

@@ -1,20 +1,20 @@
 Lab 2 Shell Project
 
-Group Members: <br>
+Group 10
 
-Lyba Mughees <br>
-100750490<br>
-
-
-Massimo Albanese<br>
-100616057<br>
+Lyba Mughees
+100750490
 
 
-Daanyaal Tahir<br>
-100746644<br>
+Massimo Albanese
+100616057
 
-Jean-Paul Saliba <br>
-100741759<br>
+
+Daanyaal Tahir
+100746644
+
+Jean-Paul Saliba
+100741759
 
 Setup
 ----------------------------------------
@@ -40,7 +40,7 @@ Launching myshell with a Batchfile
 - Format: 'sudo ./myshell <batchFile>'
 - Note: ensure you have any empty line at the end of the batch file to prevent segmentation faults
 - This command will allow myshell to execute the commands in the batchfile line by line
-<br><br>
+
 
 Commands
 ----------------------------------------
@@ -52,8 +52,8 @@ environ - list all the environment string<br>
 echo - displays all content entered after the echo commamnd followed by a new line<br>
 help - displays the user manual on to the terminal<br>
 pause - pauses the operation of the shell until the Enter key is pressed<br>
-quit - quit used to exit the shell
-<br><br>
+quit - quit used to exit the shell<br>
+
 
 Invocation of External Programs 
 ----------------------------------------
